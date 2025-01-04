@@ -1,3 +1,3 @@
-export * from './types.js';
-export { default } from './which.js';
-export { default as whichAll } from './whichAll.js';
+export type * from './types';
+export { default } from './which';
+export { default as prependEnvPath } from './prependEnvPath';
