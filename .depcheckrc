@@ -1,1 +1,1 @@
-ignores: ["@types/*", "module-which", "@biomejs/*"]
+ignores: ["module-which"]
