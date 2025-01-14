@@ -24,16 +24,16 @@ describe('which', () => {
     });
   })();
 
-  it('finds biome', (done) => {
-    which('biome', (err, biome) => {
+  it('finds which', (done) => {
+    which('which', (err, cmd) => {
       if (err) return done(err);
-      assert.equal(biome.indexOf(path.join(nodeModules, '.bin', 'biome')), 0);
+      assert.equal(cmd.indexOf(path.join(nodeModules, '.bin', 'which')), 0);
       done();
     });
   });
 
-  it('finds biome (promise)', async () => {
-    const biome = await which('biome');
-    assert.equal(biome.indexOf(path.join(nodeModules, '.bin', 'biome')), 0);
+  it('finds which (promise)', async () => {
+    const cmd = await which('which');
+    assert.equal(cmd.indexOf(path.join(nodeModules, '.bin', 'which')), 0);
   });
 });
