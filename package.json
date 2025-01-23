@@ -1,6 +1,6 @@
 {
   "name": "module-which",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Finds a module using path and node conventions",
   "keywords": [
     "which",
