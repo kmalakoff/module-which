@@ -1,6 +1,6 @@
 import path from 'path';
 import which from 'which';
-import prependEnvPath from './prependEnvPath';
+import prependEnvPath from './prependEnvPath.js';
 
 const NODES = ['node', 'node.exe', 'node.cmd'];
 
