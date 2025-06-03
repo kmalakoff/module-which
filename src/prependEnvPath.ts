@@ -13,12 +13,12 @@ export default function prependPath(options: WhichOptions = {}): PrependResult {
   const env = options.env || process.env;
   const pathKey = envPathKey({ env }) || '';
 
-  let envPath = env[pathKey] || '';
+  let envPath: string = env[pathKey] || '';
   const paths = modulePaths();
   for (let i = 1; i < paths.length; i++) {
-    envPath = prepend(envPath, path.join(paths[i], '.bin')) as string;
+    envPath = prepend(envPath, path.join(paths[i], '.bin'));
   }
-  envPath = prepend(envPath, binPath) as string;
+  envPath = prepend(envPath, binPath);
 
   return { envPath, pathKey };
 }
