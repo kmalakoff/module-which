@@ -26,7 +26,10 @@ describe('which', () => {
 
   it('finds which', (done) => {
     which('which', (err, cmd) => {
-      if (err) return done(err.message);
+      if (err) {
+        done(err.message);
+        return;
+      }
       assert.equal(cmd.indexOf(path.join(nodeModules, '.bin', 'which')), 0);
       done();
     });
