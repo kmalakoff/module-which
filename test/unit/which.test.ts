@@ -1,10 +1,9 @@
 import assert from 'assert';
-import path from 'path';
-import url from 'url';
-import Pinkie from 'pinkie-promise';
-
 // @ts-ignore
 import which from 'module-which';
+import path from 'path';
+import Pinkie from 'pinkie-promise';
+import url from 'url';
 
 const __dirname = path.dirname(typeof __filename !== 'undefined' ? __filename : url.fileURLToPath(import.meta.url));
 const nodeModules = path.join(__dirname, '..', '..', 'node_modules');
@@ -26,7 +25,10 @@ describe('which', () => {
 
   it('finds which', (done) => {
     which('which', (err, cmd) => {
-      if (err) return done(err.message);
+      if (err) {
+        done(err.message);
+        return;
+      }
       assert.equal(cmd.indexOf(path.join(nodeModules, '.bin', 'which')), 0);
       done();
     });
