@@ -7,7 +7,7 @@ import modulePaths from './modulePaths.cjs';
 const __dirname = path.dirname(typeof __filename === 'undefined' ? url.fileURLToPath(import.meta.url) : __filename);
 const binPath = path.join(__dirname, '..', '..', 'node_modules', '.bin');
 
-import type { PrependResult, WhichOptions } from './types.js';
+import type { PrependResult, WhichOptions } from './types.ts';
 
 export default function prependPath(options: WhichOptions = {}): PrependResult {
   const env = options.env || process.env;

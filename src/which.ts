@@ -1,6 +1,6 @@
 import path from 'path';
 import which from 'which';
-import prependEnvPath from './prependEnvPath.js';
+import prependEnvPath from './prependEnvPath.ts';
 
 const NODES = ['node', 'node.exe', 'node.cmd'];
 
@@ -17,7 +17,7 @@ function worker(command, options, callback) {
   });
 }
 
-import type { WhichCallback, WhichOptions } from './types.js';
+import type { WhichCallback, WhichOptions } from './types.ts';
 
 export default function moduleWhich(command: string, options?: WhichOptions | WhichCallback, callback?: WhichCallback): undefined | Promise<string> {
   if (typeof options === 'function') {
