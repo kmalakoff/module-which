@@ -16,9 +16,9 @@ export default function prependPath(options: WhichOptions = {}): PrependResult {
   let envPath: string = env[pathKey] || '';
   const paths = modulePaths();
   for (let i = 1; i < paths.length; i++) {
-    envPath = prepend(envPath, path.join(paths[i], '.bin'));
+    envPath = prepend(envPath, path.join(paths[i], '.bin')) as string;
   }
-  envPath = prepend(envPath, binPath);
+  envPath = prepend(envPath, binPath) as string;
 
   return { envPath, pathKey };
 }
