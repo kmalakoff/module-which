@@ -1,5 +1,4 @@
 import assert from 'assert';
-// @ts-ignore
 import which from 'module-which';
 import path from 'path';
 import Pinkie from 'pinkie-promise';
