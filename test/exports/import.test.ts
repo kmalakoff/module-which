@@ -1,6 +1,5 @@
 import assert from 'assert';
 
-// @ts-ignore
 import which, { prependEnvPath } from 'module-which';
 
 describe('exports .ts', () => {
