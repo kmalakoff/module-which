@@ -1,13 +1,14 @@
 import envPathKey from 'env-path-key';
+import Module from 'module';
 import path from 'path';
 import prepend from 'path-string-prepend';
 import url from 'url';
-import modulePaths from './modulePaths.cjs';
+import type { PrependResult, WhichOptions } from './types.ts';
 
+const _require = typeof require === 'undefined' ? Module.createRequire(import.meta.url) : require;
 const __dirname = path.dirname(typeof __filename === 'undefined' ? url.fileURLToPath(import.meta.url) : __filename);
 const binPath = path.join(__dirname, '..', '..', 'node_modules', '.bin');
-
-import type { PrependResult, WhichOptions } from './types.ts';
+const modulePaths = _require('./modulePaths.cjs');
 
 export default function prependPath(options: WhichOptions = {}): PrependResult {
   const env = options.env || process.env;
