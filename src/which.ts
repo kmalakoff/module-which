@@ -23,11 +23,8 @@ export default function moduleWhich(command: string, callback: WhichCallback): v
 export default function moduleWhich(command: string, options: WhichOptions, callback: WhichCallback): void;
 export default function moduleWhich(command: string, options?: WhichOptions): Promise<string>;
 export default function moduleWhich(command: string, options?: WhichOptions | WhichCallback, callback?: WhichCallback): void | Promise<string> {
-  if (typeof options === 'function') {
-    callback = options as WhichCallback;
-    options = {};
-  }
-  options = options || {};
+  callback = typeof options === 'function' ? options : callback;
+  options = typeof options === 'function' ? {} : ((options || {}) as WhichOptions);
 
   if (typeof callback === 'function') return worker(command, options, callback);
   return new Promise((resolve, reject) => worker(command, options, (err, restore) => (err ? reject(err) : resolve(restore))));
