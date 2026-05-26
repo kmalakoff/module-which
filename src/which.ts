@@ -4,16 +4,16 @@ import prependEnvPath from './prependEnvPath.ts';
 
 const NODES = ['node', 'node.exe', 'node.cmd'];
 
-function worker(command, options, callback) {
+function worker(command: string, options: WhichOptions, callback: WhichCallback) {
   if (NODES.indexOf(path.basename(command).toLowerCase()) >= 0) {
     const env = options.env || process.env;
-    if (env.NODE || env.npm_node_execpath) return callback(null, env.NODE || env.npm_node_execpath);
+    if (env.NODE || env.npm_node_execpath) return callback(undefined, env.NODE || env.npm_node_execpath);
   }
 
   // look up the full path
   const { envPath } = prependEnvPath(options);
   which(command, { path: envPath }, (err, found) => {
-    err ? callback(err) : callback(null, found);
+    err ? callback(err) : callback(undefined, found);
   });
 }
 
@@ -27,5 +27,5 @@ export default function moduleWhich(command: string, options?: WhichOptions | Wh
   options = typeof options === 'function' ? {} : ((options || {}) as WhichOptions);
 
   if (typeof callback === 'function') return worker(command, options, callback);
-  return new Promise((resolve, reject) => worker(command, options, (err, restore) => (err ? reject(err) : resolve(restore))));
+  return new Promise((resolve, reject) => worker(command, options, (err, restore) => (err ? reject(err) : resolve(restore!))));
 }
