@@ -4,7 +4,7 @@ export interface WhichOptions {
   root?: string;
 }
 
-export type WhichCallback = (err?: Error, resolved?: string) => void;
+export type WhichCallback = (err?: Error | null, resolved?: string) => void;
 
 export interface PrependResult {
   envPath: string;
