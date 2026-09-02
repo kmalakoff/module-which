@@ -1,7 +1,7 @@
-import path from 'path';
-import url from 'url';
 import envPathKey from 'env-path-key';
+import path from 'path';
 import prepend from 'path-string-prepend';
+import url from 'url';
 import modulePaths from './modulePaths.cjs';
 
 const __dirname = path.dirname(typeof __filename === 'undefined' ? url.fileURLToPath(import.meta.url) : __filename);
