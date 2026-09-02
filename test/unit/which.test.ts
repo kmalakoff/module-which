@@ -11,15 +11,13 @@ const nodeModules = path.join(__dirname, '..', '..', 'node_modules');
 describe('which', () => {
   (() => {
     // patch and restore promise
-    // @ts-ignore
-    let rootPromise: Promise;
+    if (typeof global === 'undefined') return;
+    const globalPromise = global.Promise;
     before(() => {
-      rootPromise = global.Promise;
-      // @ts-ignore
       global.Promise = Pinkie;
     });
     after(() => {
-      global.Promise = rootPromise;
+      global.Promise = globalPromise;
     });
   })();
 
