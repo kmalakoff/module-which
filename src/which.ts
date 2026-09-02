@@ -17,7 +17,7 @@ function worker(command, options, callback) {
   });
 }
 
-import type { WhichCallback, WhichOptions } from './types';
+import type { WhichCallback, WhichOptions } from './types.js';
 
 export default function moduleWhich(command: string, options?: WhichOptions | WhichCallback, callback?: WhichCallback): undefined | Promise<string> {
   if (typeof options === 'function') {
