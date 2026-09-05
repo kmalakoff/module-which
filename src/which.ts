@@ -27,5 +27,5 @@ export default function moduleWhich(command: string, options?: WhichOptions | Wh
   options = typeof options === 'function' ? {} : ((options || {}) as WhichOptions);
 
   if (typeof callback === 'function') return worker(command, options, callback);
-  return new Promise((resolve, reject) => worker(command, options, (err, restore) => (err ? reject(err) : resolve(restore!))));
+  return new Promise((resolve, reject) => worker(command, options, (err, restore) => (err ? reject(err) : resolve(restore as string))));
 }
